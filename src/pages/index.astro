@@ -1,0 +1,8 @@
+---
+// src/pages/index.astro
+import MainLayout from "../layouts/Layout.astro";
+import XSSScanner from "../components/XSSScanner.tsx";
+---
+<MainLayout title="SpectreXSS - XSS Vulnerability Scanner">
+  <XSSScanner client:load />
+</MainLayout>
