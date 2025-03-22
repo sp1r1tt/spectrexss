@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { Search } from "lucide-react"; 
+import { useState, useEffect, useRef } from "react";
+import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 import LogoEvil from "../assets/logo.svg";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Toaster, toast } from "sonner"; 
+import { Toaster, toast } from "sonner";
 
 interface Vulnerability {
   type: string;
@@ -18,7 +18,7 @@ interface Vulnerability {
 export default function XSSScanner() {
   const [url, setUrl] = useState("");
   const [scanning, setScanning] = useState(false);
-  const [progress, setProgress] = useState(0); 
+  const [progress, setProgress] = useState(0);
   const [results, setResults] = useState<{
     url: string;
     vulnerabilities: Vulnerability[];
@@ -31,6 +31,9 @@ export default function XSSScanner() {
   } | null>(null);
   const [customPayloads, setCustomPayloads] = useState<string[]>([]);
   const [customUrls, setCustomUrls] = useState<string[]>([]);
+
+  const payloadFileInputRef = useRef<HTMLInputElement>(null);
+  const urlsFileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedResults = localStorage.getItem("scanResults");
@@ -46,7 +49,6 @@ export default function XSSScanner() {
       localStorage.removeItem("scanResults");
     }
   }, [results]);
-
 
   const handlePayloadFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -69,7 +71,7 @@ export default function XSSScanner() {
         .split("\n")
         .map((line) => line.trim())
         .filter((line) => line);
-      setCustomPayloads(payloads); 
+      setCustomPayloads(payloads);
       toast(`Loaded ${payloads.length} payloads from file.`, {
         action: {
           label: "Undo",
@@ -87,7 +89,6 @@ export default function XSSScanner() {
     };
     reader.readAsText(file);
   };
-
 
   const handleUrlsFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -144,7 +145,7 @@ export default function XSSScanner() {
     }
 
     setScanning(true);
-    setProgress(0); 
+    setProgress(0);
 
     try {
       const vulnerabilities: Vulnerability[] = [];
@@ -211,7 +212,16 @@ export default function XSSScanner() {
     setResults(null);
     setCustomPayloads([]);
     setCustomUrls([]);
-    setProgress(0); 
+    setProgress(0);
+
+    // Очистка файловых вводов
+    if (payloadFileInputRef.current) {
+      payloadFileInputRef.current.value = "";
+    }
+    if (urlsFileInputRef.current) {
+      urlsFileInputRef.current.value = "";
+    }
+
     toast("Results cleared successfully!", {
       action: {
         label: "Undo",
@@ -261,7 +271,7 @@ export default function XSSScanner() {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   className="bg-gray-900/60 border-gray-700 text-white"
-                  disabled={customUrls.length > 0} 
+                  disabled={customUrls.length > 0}
                 />
                 <Button type="submit" disabled={scanning}>
                   {scanning ? (
@@ -284,6 +294,7 @@ export default function XSSScanner() {
                   accept=".txt"
                   onChange={handleUrlsFileUpload}
                   className="bg-gray-900/60 border-gray-700 text-white"
+                  ref={urlsFileInputRef}
                 />
               </div>
               <div className="flex flex-col space-y-2">
@@ -293,6 +304,7 @@ export default function XSSScanner() {
                   accept=".txt"
                   onChange={handlePayloadFileUpload}
                   className="bg-gray-900/60 border-gray-700 text-white"
+                  ref={payloadFileInputRef}
                 />
               </div>
               <div className="w-full bg-gray-700 rounded-full h-2.5 mt-4">
@@ -331,15 +343,7 @@ export default function XSSScanner() {
                         <div key={index} className="p-4 rounded-lg border border-gray-800 bg-gray-900/40">
                           <div className="flex items-center justify-between mb-2">
                             <h3 className="font-medium text-white">{vuln.type}</h3>
-                            <span
-                              className={`px-2 py-1 text-xs rounded-full ${
-                                vuln.severity === "high"
-                                  ? "bg-red-900/60 text-red-200"
-                                  : vuln.severity === "medium"
-                                  ? "bg-yellow-900/60 text-yellow-200"
-                                  : "bg-blue-900/60 text-blue-200"
-                              }`}
-                            >
+                            <span className="px-2 py-1 text-xs rounded-full bg-red-900/60 text-red-200">
                               {vuln.severity.toUpperCase()}
                             </span>
                           </div>
