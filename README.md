@@ -56,6 +56,8 @@ View Results: The results will be displayed in the "Vulnerabilities" tab, showin
 
 
 ### 📂 Project Structure
+
+```plaintext
 /
 ├── public/                  # Static assets (favicon)
 ├── src/
@@ -68,6 +70,8 @@ View Results: The results will be displayed in the "Vulnerabilities" tab, showin
 ├── astro.config.mjs         # Astro configuration
 ├── package.json             # Project dependencies and scripts
 └── tsconfig.json            # TypeScript configuration
+```
+
 
 ---
 
