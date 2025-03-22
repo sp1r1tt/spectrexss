@@ -1,6 +1,8 @@
 ---
 // src/layouts/MainLayout.astro
-import "../styles/global.css"; 
+
+import "../styles/global.css";
+import Particles from "../components/Particles";
 
 interface Props {
   title: string;
@@ -18,8 +20,26 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <slot />
+  <body class="min-h-screen relative">
+    <!-- Background Layer -->
+    <div class="absolute inset-0 z-0">
+      <Particles
+      particleColors={['#ffffff', '#ffffff']}
+      particleCount={200}
+      particleSpread={10}
+      speed={0.1}
+      particleBaseSize={100}
+      moveParticlesOnHover={true}
+      alphaParticles={false}
+      disableRotation={false}
+      client:only
+    />
+    </div>
+
+    <!-- Foreground Content -->
+    <div class="relative z-10 min-h-screen">
+      <slot />
+    </div>
   </body>
 </html>
 
