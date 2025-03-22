@@ -7,14 +7,12 @@ SpectreXSS is a modern web application designed to scan websites for potential C
 ## 🛠️ Technologies Used
 
 - **Frontend Framework**: [Astro](https://astro.build/) - A modern static site generator that allows for fast, optimized websites.
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) - A collection of reusable, accessible, and customizable UI components.
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
-- **Icons**: [Lucide](https://lucide.dev/) - A clean and consistent icon library.
 - **State Management**: React Hooks (`useState`, `useEffect`) - For managing component state and side effects.
 - **API Handling**: Fetch API - For making HTTP requests to the backend.
 - **Backend**: Astro API Routes - For handling server-side logic and XSS scanning.
 - **Toast Notifications**: [Sonner](https://github.com/emilkowalski/sonner) - A lightweight toast notification library.
-- **Radix UI Primitives**: [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible UI primitives for building design systems.
+- **Radix UI**: [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible UI primitives for building design systems.
 - **JavaScript Runtime**: [Deno](https://deno.land/) - A secure runtime for JavaScript and TypeScript, used under the hood by Astro.
 - **React**: [React](https://reactjs.org/) - A JavaScript library for building user interfaces, integrated with Astro for dynamic components.
 
@@ -58,12 +56,18 @@ View Results: The results will be displayed in the "Vulnerabilities" tab, showin
 
 
 ### 📂 Project Structure
-
-- **public/**: Contains static assets like images, the favicon, and other public files.
-- **src/components/**: Contains the React components used throughout the app.
-- **src/layouts/**: Layout components used to structure the pages.
-- **src/pages/**: Where the different pages (views) of the application are defined.
-- **src/styles/**: Global styles and Tailwind CSS configuration.
+/
+├── public/                  # Static assets (favicon)
+├── src/
+│   ├── assets/              # Project assets (images, logos)
+│   ├── components/          # React components
+│   ├── layouts/             # Layout components
+│   ├── lib/                 # Modules
+│   ├── pages/               # Astro pages
+│   ├── styles/              # Global styles and Tailwind configuration
+├── astro.config.mjs         # Astro configuration
+├── package.json             # Project dependencies and scripts
+└── tsconfig.json            # TypeScript configuration
 
 ---
 
