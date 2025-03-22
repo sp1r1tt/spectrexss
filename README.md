@@ -14,8 +14,8 @@ SpectreXSS is a modern web application designed to scan websites for potential C
 - **Toast Notifications**: [Sonner](https://github.com/emilkowalski/sonner) - A lightweight toast notification library.
 - **Radix UI**: [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible UI primitives for building design systems.
 - **JavaScript Runtime**: [Deno](https://deno.land/) - A secure runtime for JavaScript and TypeScript, used under the hood by Astro.
-- **React**: [React](https://reactjs.org/) - A JavaScript library for building user interfaces, integrated with Astro for dynamic components.
-- **React Bits**: [React Bits](https://www.reactbits.dev/) Using Parcticles animation.
+- **React**: - [JavaSript library](https://reactjs.org/) for building user interfaces, integrated with Astro for dynamic components.
+- **React Bits**: [Library](https://www.reactbits.dev/) with animated UI components.
 
 ## 🚀 Getting Started
 
