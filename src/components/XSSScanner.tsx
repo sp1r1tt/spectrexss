@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "./ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Toaster, toast } from "sonner";
-import Dither from "./Particles.tsx";
 
 interface Vulnerability {
   type: string;
