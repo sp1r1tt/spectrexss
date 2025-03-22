@@ -1,6 +1,6 @@
 #
 
-![Product Image](./src/assets/spectrexss.jpg)
+![Product Image](./src/assets/spectre.jpg)
 
 SpectreXSS is a modern web application designed to scan websites for potential Cross-Site Scripting (XSS) vulnerabilities. Built with cutting-edge technologies, it provides a user-friendly interface for security professionals and developers to identify and mitigate Reflected XSS risks.
 
