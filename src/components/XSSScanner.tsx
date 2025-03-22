@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "./ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Toaster, toast } from "sonner";
+import Dither from "./Particles.tsx";
 
 interface Vulnerability {
   type: string;
@@ -236,13 +237,8 @@ export default function XSSScanner() {
   };
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="fog-container">
-          <div className="fog-img fog-img-first"></div>
-          <div className="fog-img fog-img-second"></div>
-        </div>
-      </div>
+<div className="relative min-h-screen overflow-hidden">
+      {/* Background Layer */}
 
       <div className="relative z-10 container mx-auto py-10 px-4">
         <div className="flex flex-col items-center justify-center mb-8">
